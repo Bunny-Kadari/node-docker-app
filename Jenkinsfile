@@ -20,20 +20,20 @@ pipeline {
             steps {
                 sh '''
                 docker build -t node-docker-app:${BUILD_NUMBER} .
-                docker tag node-docker-app:${BUILD_NUMBER} Bunny-Kadari/node-docker-app:${BUILD_NUMBER}
+                docker tag node-docker-app:${BUILD_NUMBER} BunnyKadari/node-docker-app:${BUILD_NUMBER}
                 '''
             }
         }
 
         // stage('Push Docker Image') {
         //     steps {
-        //         sh 'docker push Bunny-Kadari/node-docker-app:${BUILD_NUMBER}'
+        //         sh 'docker push BunnyKadari/node-docker-app:${BUILD_NUMBER}'
         //     }
         // }
         
         stage('Create container') {
             steps {
-                sh 'docker run -d -p 3000:8080 Bunny-Kadari/node-docker-app:${BUILD_NUMBER}'
+                sh 'docker run -d -p 3000:8080 BunnyKadari/node-docker-app:${BUILD_NUMBER}'
             }
         }
 
